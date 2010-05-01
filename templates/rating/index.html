@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table border=1>
+  <tr><td rowspan="2">ФИО</td><td colspan="4">Текущий месяц</td><td colspan="3">Прошлый месяц</td></tr>
+  <tr>                        <td>Посещения</td><td>Комментарии</td><td>Ссылки</td><td>±</td>
+                              <td>Посещения</td><td>Комментарии</td><td>Ссылки</td></tr>
+
+	<tr>
+	  <td>Иванов И.И.</td>
+	  <td>1234</td>
+	  <td>32</td>
+	  <td>430</td>
+	  <td>&uparr;</td>
+	  <td>1002</td>
+	  <td>33</td>
+	  <td>423</td>
+	</tr>
+	
+</table>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+{% load cms_tags %}
+{% block mainnav %}
+
+								<div id="menu">
+									<table>
+										<tr>
+											{% show_menu 1 1 %}
+										</tr>
+									</table>
+								</div>
+{% endblock %}
+
+{% block content %}
+<div id="body">
+
+                                                 <div class="linkwright">
+                                                                        <span><a href="/news/pressmap/">Pressmap</a></span>
+                                                                </div>
+                                                                <!-- /LINK W RIGHT -->
+
+                                                                <h1 class="with_style">Новости</h1>
+
+                                                                <div class="endblock">&nbsp;</div>
+
+                                                                <!-- NEWS LIST -->
+                                                                <table class="w100">
+  {% for r in res %}
+                                                                        <tr>
+                                                                                <td valign="top">
+                                                                                        <div class="news_img"><img src="{% thumbnail r.photo.name 80x80 upscale %}" width="80" height="80"></div>
+                                                                                </td>
+                                                                                <td valign="top" class="w100">
+                                                                                        <div class="news_one">
+                                                                                                <div class="date">{{ r.date|date }}</div>
+                                                                                                <div class="title" style="margin: 0px 0px 6px 0px;"><a href="{{ r.get_absolute_url }}" style="text-decoration: underline;">{{ r.title }}</a></div>
+                                                                                                <div class="text font11">
+<p>{{ r.description }}</p>
+                                                                                                        <div class="endblock">&nbsp;</div>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                </td>
+                                                                        </tr>
+  {% endfor %}
+								</table>
+
+  
+{% endblock %}
