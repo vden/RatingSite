@@ -40,10 +40,6 @@ MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/admin-media/'
 PHOTOS_ROOT = os.path.join(MEDIA_ROOT, 'photos')
 
-MEDIA_ROOT = ''
-MEDIA_URL = ''
-ADMIN_MEDIA_PREFIX = '/media/'
-
 SECRET_KEY = '6vtp6va=kwegt$@^j755a3oce^#3sm5%zq%fi8g96t)l5ctq%^'
 
 TEMPLATE_LOADERS = (

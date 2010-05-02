@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
+{% load int %}
 {% block content %}
 
 <table border=1>
-  <tr><td rowspan="2">ФИО</td><td colspan="4">Текущий месяц</td><td colspan="3">Прошлый месяц</td></tr>
-  <tr>                        <td>Ссылки</td><td>Комментарии</td><td>Комментаторы</td><td>±</td>
-                              <td>Ссылки</td><td>Комментарии</td><td>Комментаторы</td></tr>
-			  {% for i in atoms %}
-	<tr>
-	  <td>{{ i.0.blog.url }}</td>
+  <tr><td rowspan="2">#</td><td rowspan="2">Блог</td><td colspan="4">Текущий месяц</td><td colspan="3">Прошлый месяц</td></tr>
+  <tr>                        <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td><td>±</td>
+                              <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td></tr>
+	{% for i in atoms %}
+	<tr {% ifequal request.session.openid_name i.0.blog.url  %}class="my-blog"{% endifequal %}>
+	  <td>{{ forloop.counter }}</td>
+	  <td>{{ i.0.blog.url|urlize }}</td>
 	  {% for v in i %}
-	  <td>{{ v.value }}</td>
+	  <td>{{ v.value|int_filter }}</td>
 	  {% endfor %}
-	  <td>&uparr;</td>
+	  <td class="up">&uarr;</td>
 	  <td>0</td>
 	  <td>0</td>
 	  <td>0</td>

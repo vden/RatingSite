@@ -205,6 +205,7 @@ def login_complete(request, redirect_field_name=REDIRECT_FIELD_NAME):
     if openid_response.status == SUCCESS:
         user = authenticate(openid_response=openid_response)
         if user is not None:
+            request.session["openid_name"] = openid_response.identity_url
             if user.is_active:
                 auth_login(request, user)
                 return HttpResponseRedirect(sanitise_redirect_url(redirect_to))
