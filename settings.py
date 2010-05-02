@@ -3,6 +3,11 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+import os.path
+import sys
+
+PROJECT_ROOT = os.path.dirname(__file__)
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -10,16 +15,12 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'db.sqlite3'             # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(PROJECT_ROOT, 'db.sqlite3')             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
-import os.path
-import sys
-
-PROJECT_ROOT = os.path.dirname(__file__)
 APPS_ROOT = os.path.join(PROJECT_ROOT, 'src')
 sys.path.insert(0, APPS_ROOT)
 
@@ -75,7 +76,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Should users be created when new OpenIDs are used to log in?
-OPENID_CREATE_USERS = False
+OPENID_CREATE_USERS = True
 
 # When logging in again, should we overwrite user details based on
 # data received via Simple Registration?

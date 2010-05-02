@@ -6,7 +6,9 @@
 </head>
 
 <body>
-<h1>Ratings</h1>
+<h1><a href="{% url core_index %}">Ratings</a></h1>
+
+<a href="{% url rating_index %}">Рейтинги</a> | <a href="{% url graphic_index %}">Инфографика</a>
 
 {% block content %} {% endblock %}
 
