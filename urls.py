@@ -12,7 +12,7 @@ urlpatterns = patterns('',
 
 	(r'^admin/', include(admin.site.urls)),
 	(r'^openid/', include('django_openid_auth.urls')),
-	(r'^logout/$', 'django.contrib.auth.views.logout'),
+	url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': "/"}, name="core_logout"),
 
 	(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	(r'^', include('core.urls')),
