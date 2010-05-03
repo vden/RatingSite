@@ -2,11 +2,8 @@
 <html xml:lang="ru-ru" xmlns="http://www.w3.org/1999/xhtml" lang="ru-ru"><head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="joomla, Joomla">
   <meta name="title" content="Об Агенстве">
   <meta name="author" content="Administrator">
-  <meta name="description" content="Joomla! - the dynamic portal engine and content management system">
-  <meta name="generator" content="Joomla! 1.5 - Open Source Content Management">
 
   <title>{% block title %}{{ title }}{% endblock %}</title>
 
@@ -35,6 +32,7 @@
   <link rel="stylesheet" href="/media/css/addons.css" type="text/css">
   <link rel="stylesheet" href="/media/css/layout.css" type="text/css">
   <link rel="stylesheet" href="/media/css/template.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
   <link rel="stylesheet" href="/media/css/typo.css" type="text/css">
 
 <!--[if IE]>
@@ -54,7 +52,7 @@
 <![endif]-->
 
 <script type="text/javascript">
-var siteurl='http://it-found.org/';
+var siteurl='/';
 var tmplurl='http://it-found.org/templates/ja_teline_iii';
 </script>
 
@@ -245,6 +243,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 </style>
 
 </head>
+{% load i18n %}
   <body id="bd" class="fs3 Moz">
     <div id="ja-wrapper">
       <a name="Top" id="Top"></a>
@@ -310,57 +309,43 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
                 </div>
               </li>
               <li class="havechild mega item_icon1">
-                <a class="megaitem" href="#"><span>ВХОД</span></a>
+{% if not request.user.is_authenticated %}
+			  <a class="megaitem" href="#"><span>ВХОД</span></a>
                 <div class="childcontent">
                   <div class="inner">
-                    <form action="index.php" method="post" name="form-login" id="form-login">
 
-                      <fieldset class="input">
-                        <p id="form-login-username">
-                          <label for="username">Логин<br>
-                            <input name="username" id="username" class="inputbox" alt="username" size="18" type="text">
-                          </label>
-                        </p>
-                        <p id="form-login-password">
-                          <label for="passwd">Пароль<br>
-                            <input name="passwd" id="passwd" class="inputbox" size="18" alt="password" type="password">
-                          </label>
-                        </p>
-                        <p id="form-login-remember">
-                          <label for="remember">Запомнить меня 
-                            <input name="remember" id="remember" value="yes" alt="Remember Me" type="checkbox">
-                          </label>
-                        </p>
-                        <input name="Submit" class="button" value="Войти" type="submit">
-                      </fieldset>
+<form name="fopenid" action="{% url login_begin %}" method="post">
+	<fieldset>
+		<legend>{% trans "Sign In Using Your OpenID" %}</legend>
+        <div class="form-row">
+            <label for="id_openid_identifier">{% trans "OpenID:" %}</label><br />
+            {{ form.openid_identifier }}
+        </div>
+        <div class="submit-row "><input name="bsignin" type="submit" value="{% trans "Sign in" %}"></div>
+ <input id="id_openid_identifier" type="text" class="required openid" name="openid_identifier" maxlength="255" />
 
-                      <ul>
-                        <li><a href="http://it-found.org/index.php?option=com_user&amp;view=reset">Забыли пароль?</a></li>
-                        <li><a href="http://it-found.org/index.php?option=com_user&amp;view=remind">Забыли логин?</a></li>
-                        <li><a href="http://it-found.org/index.php?option=com_user&amp;view=register">Регистрация</a></li>
-                      </ul>
+ {% if next %}
+	<input type="hidden" name="next" value="{{ next }}" />
+ {% endif %}
 
-                      <input name="option" value="com_user" type="hidden">
-                      <input name="task" value="login" type="hidden">
-                      <input name="return" value="L2luZGV4LnBocA==" type="hidden">
-                      <input name="5a7349130f8b4fbcd100df38a4beefe6" value="1" type="hidden">
+	</fieldset>
+</form>
 
-                    </form>
+				
                   </div>
                 </div>
+{% else %}
+			 <a class="megaitem" href="{% url core_logout %}"><span>ВЫХОД</span></a>	
+{% endif %}
               </li>
 
-              <li class="havechild mega item">
+<!--
+			  <li class="havechild mega item">
                 <a class="megaitem" href="#"><span>Twitter</span></a>
                 <div class="childcontent">
                   <div class="inner">
                     <div class="ja-twitter">
 
-<!-- ACCOUNT INFOMATION -->
-<!-- // ACCOUNT INFOMATION -->
-<!-- LISTING FRIENDS -->
-<!-- //LISTING FRIENDS -->
-<!-- LISTING TWEETS -->
 
                       <div class="ja-twitter-tweets">
                         <div class="ja-twitter-item">
@@ -372,8 +357,6 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
                           <div class="ja-twitter-date" style="">01.05.2010 05:12</div>
                         </div>
                       </div>
-
-<!-- //LISTING TWEETS -->
 
                       <center>
                         <img alt="twitter" src="/media/img/twitter-16x16.png" align="left">
@@ -389,6 +372,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 
               <li class="havechild mega item">
               </li>
+-->
             </ul>
           </div>
         </div>
@@ -406,9 +390,11 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 
       <div class="ja-navhelper wrap">
         <div class="main clearfix">
+		  {% block crumbs %}
           <div class="ja-breadcrums">
             <strong>Вы просматриваете:</strong> <span class="breadcrumbs pathway">ГЛАВНАЯ</span>
           </div>
+		  {% endblock %}
 
           <ul class="no-display">
             <li><a href="http://it-found.org/index.php#ja-content" title="Пропустить">Пропустить</a></li>
@@ -477,63 +463,24 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
       <div id="ja-container" class="wrap ja-r2">
         <div class="main clearfix">
 {% block container %}
-          <div id="ja-mainbody" style="width: 60%;">
-
+		<div id="ja-mainbody"  {% block no_right_column %} style="width: 100%;" {% endblock %}>
 <!-- CONTENT -->
-{% block content %}
+
             <div id="ja-main" style="width: 100%;">
               <div class="inner clearfix">
                 <div id="ja-contentwrap" class="">
                   <div id="ja-content" class="column" style="width: 100%;">
                     <div id="ja-current-content" class="column" style="width: 100%;">
                       <div class="ja-content-main clearfix">
-                        <div class="componentheading">Добро пожаловать!</div>
+
+						{% block content %}
+						
+                        <div class="componentheading">{{ request.current_page.get_title }}</div>
 
                           <div class="article-content">
 
 							{% placeholder "content" %}
-							
-<h3 style="text-align: right;"><strong><em>Если Вас не видят, Вы не 
-существуете.</em></strong></h3>
-<p>Миссия нашего сайта – показать, каким Вас видят сегодня и каким 
-увидят завтра.</p>
-<p>Сайт обнародует рейтинги представленности ведущих российских 
-политиков и бизнесменов в «новостном» Интернете и в блогосфере. 
-Консультанты-эксперты подскажут, как достичь вершин этих рейтингов.</p>
-<p>Мы будем постоянно искать и находить передовые коммуникативные 
-технологии и рассказывать о них на сайте. Лучшие пиар-специалисты 
-&nbsp;обучат Вас этим технологиям на семинарах и круглых столах. Лучшие 
-блоггеры подскажут, куда Вам идти и «куда ходить не &nbsp;надо – там 
-кирпич…»</p>
-<p>Используя ресурсы блогосферы, сайт объединит опытных и начинающих 
-экспертов для решения наиболее актуальных коммуникативных проблем, для 
-&nbsp;адаптации &nbsp;мирового опыта &nbsp;в &nbsp;секторе &nbsp;рунета.</p>
-<p>Мы проконсультируем Вас, как правильно построить современную 
-коммуникативную кампанию, что прочесть на эту тему и как собрать 
-команду, которая приведет Вас к победе.</p>
-<p>&nbsp;</p>
-<p><strong>Для кого наш проект</strong></p>
-<p>Вас интересует общественное мнение о Вас?</p>
-<p>Вы хотите улучшить свой имидж в глазах коллег, партнеров, властей, 
-избирателей, «заграницы»?</p>
-<p>Вы хотите, чтобы у Вас была устойчивая положительная репутация?</p>
-<p>Вашей организации, отрасли, области нужны иностранные и/или 
-российские инвестиции?</p>
-<p>Цену Вашей компании надо нарастить за счет ее репутационной 
-составляющей?</p>
-<p>Ваша компания не выдерживает конкуренции из-за отсутствия 
-корпоративной культуры?</p>
-<p>Вы хотите стать заметным в большой политике?</p>
-<p>Вас не устраивает эффективность работы Вашей пресс-службы?</p>
-<p>Вы – профессионал в области PR?</p>
-<p>Вы блоггер, умеющий оценивать коммуникации в политике, бизнесе, 
-культуре?</p>
-<p>Или Вы еще только учитесь на «мастера коммуникаций» (пиарщика, 
-журналиста, психолога, блоггера)?</p>
-<p>&nbsp;</p>
-<p>Добро пожаловать на наш сайт!</p>
-<p>Здесь ждут именно Вас.</p>
-<p>&nbsp;</p>
+		
 
 <span id="jabookmark-container" style="display: block;" class="ja-social-bookmarking">
 
@@ -548,81 +495,20 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 </span>
 
                         </div>
+						{% endblock %}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-{% endblock %}
+
 <!-- //CONTENT -->
           </div>
 
 <!-- RIGHT COLUMN--> 
 {% block right_column %}
-          <div id="ja-right" class="column sidebar" style="width: 40%;">
 
-          <div class="ja-mass ja-mass-top clearfix">
-            <div class="ja-moduletable moduletable  clearfix" id="Mod99">
-              <div class="ja-box-ct clearfix">
-                <a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=389:10-things-you-must-know-about-teline-iii" title="What's new in JA Teline iii?"><img src="/media/img/what-new.jpg" alt="What's new in teline iii"></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="ja-colswrap clearfix ja-r1">
-            <div class="ja-col  column">
-              <div class="ja-moduletable moduletable_menu  clearfix" id="Mod1">
-                <h3><span>ГЛАВНОЕ</span></h3>
-                <div class="ja-box-ct clearfix">
-                  <ul class="menu"><li class="item1"><a href="http://it-found.org/index.php?option=com_content&amp;view=frontpage&amp;Itemid=1"><span>Главная</span></a></li></ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ja-mass ja-mass-bottom clearfix">
-            <div class="ja-moduletable moduletable_text  clearfix" id="Mod38">
-
-              <h3><span>На правах рекламы</span></h3>
-              <div class="ja-box-ct clearfix">
-                <div class="bannergroup_text">
-                  <div class="bannerheader">Featured Links:</div>
-                    <div class="banneritem_text">
-                      <a href="#" target="_blank">Joomla!</a><br>
-                      Joomla! The most popular and widely used Open Source CMS Project in the world.
-                      <div class="clr"></div>
-                    </div>
-                    <div class="banneritem_text">
-                      <a href="#" target="_blank">JoomlaCode</a><br>
-                      JoomlaCode, development and distribution made easy.
-                      <div class="clr"></div>
-                    </div>
-                    <div class="banneritem_text">
-                      <a href="#" target="_blank">Joomla! Extensions</a><br>
-                      Joomla! Components, Modules, Plugins and Languages by the bucket load.
-                      <div class="clr"></div>
-                    </div>
-                    <div class="banneritem_text">
-                      <a href="#" target="_blank">Joomla! Shop</a><br>
-                      For all your Joomla! merchandise.
-                      <div class="clr"></div>
-                    </div>
-                    <div class="bannerfooter_text">
-                      <a href="http://www.joomla.org/">Ads by Joomla!</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="ja-moduletable moduletable  clearfix" id="Mod92">
-                <div class="ja-box-ct clearfix">
-                  <img src="/media/img/bmw-x5.jpg" alt="BMW-X5">
-                </div>
-              </div>
-
-            </div>
-          </div>
 {% endblock %}
 <!-- RIGHT COLUMN--> 
 

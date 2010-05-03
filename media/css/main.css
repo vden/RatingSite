@@ -2,3 +2,12 @@ tr.my-blog  td {
 	background-color: yellow;
 }
 
+table.rating { 
+	width: 100% !important;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+table.rating td { 
+	padding: 2px;
+}

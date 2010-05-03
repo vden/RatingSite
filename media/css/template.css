@@ -771,7 +771,7 @@ div.bannergroup_text div.bannerfooter_text {
 #ja-container { z-index: 5; position: relative; }
 
 /* 3 Columns - 2 Columns Right Layout [Default] ---*/
-#ja-container.ja-r2 .main { background: url(../images/dot.gif) repeat-y 60% 0 #fff; }
+#ja-container.ja-r2 .main { background-color: white; /* url(../images/dot.gif) repeat-y 100% 0 #fff; */}
 #ja-container.ja-r1 .main { background: url(../images/dot.gif) repeat-y 80% 0 #fff; }
 
 #ja-container.ja-r2 .ja-content-top, #ja-container.ja-r2 .ja-content-main, #ja-container.ja-r2 .ja-content-bottom { margin-right: 1px; }
