@@ -1,0 +1,35 @@
+/* Twitter Module ---*/
+.twitter { padding: 15px 0 !important; }
+.twitter h3 { padding: 0 15px !important; }
+.ja-twitter { padding: 0 15px; }
+
+.ja-twitter h4 {
+	font-size: 92%;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	background: #f7f7f7;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin: 10px -15px;
+	padding: 5px 15px;
+}
+
+.ja-twitter-avatar {
+	float: left;
+	margin-right: 5px;
+	padding: 2px;
+	border: 1px solid #ddd;
+}
+
+.ja-twitter center img { vertical-align: middle; }
+
+div.ja-twitter div.ja-twitter-item {
+	margin: 0 0 10px;
+	padding: 0 0 10px;
+	border-bottom: 1px dotted #ccc;
+}
+
+div.ja-twitter div.ja-twitter-source { font-weight: bold; }
+
+div.ja-twitter div.ja-twitter-date { font-size: 92%; color: #666; }

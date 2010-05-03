@@ -8,7 +8,7 @@
   <meta name="description" content="Joomla! - the dynamic portal engine and content management system">
   <meta name="generator" content="Joomla! 1.5 - Open Source Content Management">
 
-  <title>{% block title %}{{ title }}{% endblock %}</title>
+  <title>{{ page.title }}</title>
 
   <link href="http://it-found.org/templates/ja_teline_iii/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link rel="stylesheet" href="/media/css/style_002.css" type="text/css">
@@ -19,11 +19,11 @@
   <link rel="stylesheet" href="/media/css/mod_jamegamenu.css" type="text/css">
   <link rel="stylesheet" href="/media/css/style_006.css" type="text/css">
 
-  <script type="text/javascript" src="/media/js/mootools.js"></script>
-  <script type="text/javascript" src="/media/js/caption.js"></script>
-  <script type="text/javascript" src="/media/js/script_003.js"></script>
-  <script type="text/javascript" src="/media/js/script.js"></script>
-  <script type="text/javascript" src="/media/js/script_002.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/media/css/mootools.js"></script>
+  <script type="text/javascript" src="/media/css/caption.js"></script>
+  <script type="text/javascript" src="/media/css/script_003.js"></script>
+  <script type="text/javascript" src="/media/css/script.js"></script>
+  <script type="text/javascript" src="/media/css/script_002.js" charset="utf-8"></script>
   <script type="text/javascript">
 		var jaUserSetting; window.addEvent( 'domready', function() {
 				jaUserSetting = new JAUserSetting();}); 
@@ -246,6 +246,10 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 
 </head>
   <body id="bd" class="fs3 Moz">
+    <div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;">
+      <iframe src="index.php_files/sh16.html" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0pt none; left: 0pt; top: 0pt;" id="_atssh904"></iframe>
+    </div>
+
     <div id="ja-wrapper">
       <a name="Top" id="Top"></a>
 
@@ -286,7 +290,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
                   <div class="inner">
                     <div>
                       <p style="text-align: center;">
-                        <img src="/media/img/icon_feature.png" alt="Feature" title="Feature" border="0">
+                        <img src="index.php_files/icon_feature.png" alt="Feature" title="Feature" border="0">
                         <span style="color: rgb(204, 0, 0); font-size: 150%;">10</span> Things you <span style="color: rgb(204, 0, 0);">MUST</span> know about Teline III
                       </p>
                       <h4 style="text-align: center; padding-top: 5px;">
@@ -302,9 +306,9 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
                   <div class="inner">
                     <p><strong style="margin-right: 10px;">Размер шрифта: </strong></p>
                     <ul class="ja-usertools-font" style="display: inline;">
-                      <li><img src="/media/img/user-increase.gif" alt="Increase font size" title="Increase font size" style="cursor: pointer;" border="0"></li>
-                      <li><img src="/media/img/user-reset.gif" alt="Default font size" title="Default font size" style="cursor: pointer;" border="0"></li>
-                      <li><img src="/media/img/user-decrease.gif" alt="Decrease font size" title="Decrease font size" style="cursor: pointer;" border="0"></li>
+                      <li><img src="index.php_files/user-increase.gif" alt="Increase font size" title="Increase font size" style="cursor: pointer;" border="0"></li>
+                      <li><img src="index.php_files/user-reset.gif" alt="Default font size" title="Default font size" style="cursor: pointer;" border="0"></li>
+                      <li><img src="index.php_files/user-decrease.gif" alt="Decrease font size" title="Decrease font size" style="cursor: pointer;" border="0"></li>
                     </ul>
                   </div>
                 </div>
@@ -376,7 +380,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 <!-- //LISTING TWEETS -->
 
                       <center>
-                        <img alt="twitter" src="/media/img/twitter-16x16.png" align="left">
+                        <img alt="twitter" src="index.php_files/twitter-16x16.png" align="left">
                           <a href="http://twitter.com/twit/" target="_blank" title="Follow twit on Twitter">
                             <span>Follow twit on Twitter</span>
                           </a>
@@ -491,13 +495,13 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 
 <!-- //TOP SPOTLIGHT -->
 <!-- MAIN CONTAINER -->
+
+
       <div id="ja-container" class="wrap ja-r2">
         <div class="main clearfix">
-{% block container %}
           <div id="ja-mainbody" style="width: 60%;">
 
 <!-- CONTENT -->
-{% block content %}
             <div id="ja-main" style="width: 100%;">
               <div class="inner clearfix">
                 <div id="ja-contentwrap" class="">
@@ -556,7 +560,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
   addthis_pub="joomlart";addthis_header_color="#000000";addthis_header_background="#999999";addthis_brand="joomlart.com";addthis_language="en";addthis_options="";addthis_offset_top="";addthis_offset_left="";
 </script>
 
-<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="/media/img/lg-bookmark-en.gif" alt="" border="0">  </a>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="index.php_files/lg-bookmark-en.gif" alt="" border="0">  </a>
 
 <script type="text/javascript" src="/media/js/addthis_widget.js"></script>
 
@@ -569,18 +573,16 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
                 </div>
               </div>
             </div>
-{% endblock %}
 <!-- //CONTENT -->
           </div>
 
 <!-- RIGHT COLUMN--> 
-{% block right_column %}
           <div id="ja-right" class="column sidebar" style="width: 40%;">
 
           <div class="ja-mass ja-mass-top clearfix">
             <div class="ja-moduletable moduletable  clearfix" id="Mod99">
               <div class="ja-box-ct clearfix">
-                <a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=389:10-things-you-must-know-about-teline-iii" title="What's new in JA Teline iii?"><img src="/media/img/what-new.jpg" alt="What's new in teline iii"></a>
+                <a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=389:10-things-you-must-know-about-teline-iii" title="What's new in JA Teline iii?"><img src="index.php_files/what-new.jpg" alt="What's new in teline iii"></a>
               </div>
             </div>
           </div>
@@ -632,21 +634,18 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 
               <div class="ja-moduletable moduletable  clearfix" id="Mod92">
                 <div class="ja-box-ct clearfix">
-                  <img src="/media/img/bmw-x5.jpg" alt="BMW-X5">
+                  <img src="index.php_files/bmw-x5.jpg" alt="BMW-X5">
                 </div>
               </div>
 
             </div>
           </div>
-{% endblock %}
 <!-- RIGHT COLUMN--> 
 
-{% endblock %}
         </div>
       </div>
 <!-- //MAIN CONTAINER -->
 <!-- BOTTOM SPOTLIGHT -->
-{% block bottom %}
       <div id="ja-botsl" class="wrap">
         <div class="main clearfix">
           <div class="ja-box column ja-box-left" style="width: 20%;">
@@ -683,7 +682,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
             <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod76">
               <h3><span>Персоналии</span></h3>
               <div class="ja-box-ct clearfix">
-                <p><img src="/media/img/fashion-1.jpg" alt="Fashion" border="0">Pellentesque porttitor Vestibulum Mauris</p>
+                <p><img src="index.php_files/fashion-1.jpg" alt="Fashion" border="0">Pellentesque porttitor Vestibulum Mauris</p>
               </div>
             </div>
           </div>
@@ -692,7 +691,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
             <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod75">
               <h3><span>Sport</span></h3>
               <div class="ja-box-ct clearfix">
-                <img src="/media/img/sport-1.jpg" alt="Sport">Nulla tincidunt tincidunt <a href="#" title="Sport">velit tristique leo.</a>
+                <img src="index.php_files/sport-1.jpg" alt="Sport">Nulla tincidunt tincidunt <a href="#" title="Sport">velit tristique leo.</a>
               </div>
             </div>
           </div>
@@ -701,14 +700,13 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
             <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod133">
               <h3><span>Подписки</span></h3>
               <div class="ja-box-ct clearfix">
-                <p><img src="/media/img/follow.jpg" alt="Follow us" border="0"></p>
+                <p><img src="index.php_files/follow.jpg" alt="Follow us" border="0"></p>
               </div>
             </div>
           </div>
 
         </div>
       </div>
-{% endblock %}
 <!-- //BOTTOM SPOTLIGHT -->
 <!-- FOOTER -->
       <div id="ja-footer" class="wrap">

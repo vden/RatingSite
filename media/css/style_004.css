@@ -1,0 +1,29 @@
+.ja-headlines {
+	overflow: hidden;
+	width: auto ;
+	position: relative !important; height:16px;
+}
+
+.ja-headlines .ja-headlines-item {  
+	  text-align: center;
+	  visibility: hidden;
+	  height:16px;;
+}
+
+.ja-headlines .jahl-vertical, .jahl-verticald,
+.ja-headlines .jahl-horizontal, .jahl-horizontal_right {
+	width: auto;
+	display: block;
+	position: absolute!important;
+}
+
+.ja-headlines .jahl-opacity {
+	width: auto;
+	display: block;
+	position: absolute!important;
+	float: left;
+}
+
+.ja-headlines .separator { padding: 0 5px; }
+ 
+.ja-headlines-right{ float:left; text-align:right; }

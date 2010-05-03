@@ -1,0 +1,94 @@
+/*
+# ------------------------------------------------------------------------
+# JA Teline III - Stable - Version 1.4 - Licence Owner JA49652
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+# This file may not be redistributed in whole or significant part.
+# ------------------------------------------------------------------------
+*/
+
+/* MAIN LAYOUT DIVS
+--------------------------------------------------------- */
+.wrap { width: 100%; clear: both; }
+.main { width: 980px; margin: 0 auto; position: relative;}
+
+.column { overflow: hidden; float: left; }
+
+.ja-mass { clear: both; }
+
+/* Gutter ---*/
+.main .inner {
+/* We use liquid layout, so we need to insert a div which will create margin if need */
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+div.ja-moduletable, div.moduletable, div.ja-module, div.module { 
+/* for side columns and spotlight, we only need to add margin or padding to Module */
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.article_column .contentpaneopen {
+/* for article columns, we only need to add margin or padding to this div  */
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.leading {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.leading, .article_row {
+/* minus the spacing of the article row to macth with the Gutter & global grid */
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+/* MAIN COLUMN
+--------------------------------------------------------- */
+#ja-mainbody { float: left; }
+#ja-current-content, #ja-main { float: right; }
+
+/* SIDE COLUMNS
+--------------------------------------------------------- */
+.ja-colswrap {}
+.ja-col {}
+
+/* Left Column ---*/
+#ja-left .ja-l2 .ja-left1, #ja-left .ja-l2 .ja-left2 { width: 50%; }
+#ja-left .ja-l1 .ja-col { width: 100%; }
+
+/* Right Column ---*/
+#ja-right { float: right; }
+#ja-right .ja-r2 .ja-right1, #ja-right .ja-r2 .ja-right2 { width: 50%; }
+#ja-right .ja-r1 .ja-col { width: 100%; }
+
+/* HEADER
+--------------------------------------------------------- */
+#ja-header {}
+
+/* FOOTER
+--------------------------------------------------------- */
+#ja-footer { clear: both; }
+
+/* CONTENT'S GRIDS
+--------------------------------------------------------- */
+.article_column { float: left; position: relative; }
+
+.cols1 .article_column { width: 100%; }
+.cols2 .article_column { width: 50%; }
+.cols3 .article_column { width: 33.33%; }
+.cols4 .article_column { width: 25%; }
+.cols5 .article_column { width: 20%; }
+
+/* SPOTLIGHT
+--------------------------------------------------------- */
+#ja-topsl {}
+#ja-botsl {}
+
+.ja-box { float: left; overflow: hidden; }

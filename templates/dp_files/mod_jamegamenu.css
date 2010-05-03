@@ -1,0 +1,70 @@
+/*
+# ------------------------------------------------------------------------
+# JA Teline III - Stable - Version 1.4 - Licence Owner JA49652
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+# This file may not be redistributed in whole or significant part.
+# ------------------------------------------------------------------------
+*/
+
+/* 1st lv
+-----------------------------------*/
+.ja-megamenu { float: right; }
+
+.ja-megamenu li.mega {
+	border: none;
+}
+
+.ja-megamenu li.havechild a.megaitem { width: 70px; border-left: 1px solid #ddd; color: #999; height: 19px; line-height: 19px; padding: 0;}
+
+.ja-megamenu li.havechild a.megaitem span { background: none; padding: 0; }
+
+.ja-megamenu li.mega a.megaitem { font-weight: bold; }
+
+.ja-megamenu li.mega:hover, .ja-megamenu li.over { background: #333; color: #fff; }
+
+.ja-megamenu li.mega:hover a, .ja-megamenu li.mega:hover a:hover,
+.ja-megamenu li.over a, .ja-megamenu li.over a:hover { color: #fff; text-decoration: none; }
+
+.ja-megamenu li.active a.megaitem { background: #333; color: #fff; text-decoration: none; }
+
+/* 2nd lv
+-----------------------------------*/
+.ja-megamenu li.havechild .childcontent { /*hide the menu*/
+	width: 180px;
+}
+
+.childcontent {
+	background: url(../images/grad-l2.gif) repeat-x top #fff;
+	border: 1px solid #ddd;
+	margin-left: -111px;
+	color: #333;
+}
+
+.childcontent a { padding: 0 !important; color: #000 !important; display: inline !important; border-bottom: 1px dotted #000;  }
+
+.childcontent a:hover { text-decoration: none !important; border-bottom: 1px solid #000; }
+
+.childcontent .button { margin: 10px 0; font-weight: bold; font-size: 100%; }
+
+ /* 2nd lv content ---*/
+.childcontent .inner h3 { margin: 0 0 10px; padding: 0; font-size: 100%; }
+
+.childcontent .inner ul { margin: 0; padding: 0; }
+ 
+.ja-megamenu li.havechild .childcontent .inner ul li {
+	background: url(../images/bullet.gif) no-repeat 2px 7px !important;
+	margin: 0;
+	padding-left: 10px;
+	overflow: hidden;
+	border: none;
+}
+
+/* Megamenu Module Override ----*/
+/* Twitter */
+.ja-megamenu .ja-twitter { padding: 0 ; }
+
+.ja-megamenu .ja-twitter h4 { display: none; }

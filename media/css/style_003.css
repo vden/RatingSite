@@ -1,0 +1,77 @@
+/*
+# ------------------------------------------------------------------------
+# JA Teline III - Stable - Version 1.4 - Licence Owner JA49652
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+# This file may not be redistributed in whole or significant part.
+# ------------------------------------------------------------------------
+*/ 
+
+.ja-megamenu {
+	margin: 0;
+	padding: 0;
+}
+
+.ja-megamenu li.mega {
+	margin: 0;
+	padding: 0;
+	background: none;
+	display: block;
+	float: left;
+}
+
+.ja-megamenu li.havechild a.megaitem {
+	display: block;
+	text-align: center;
+}
+
+.ja-megamenu li.havechild a.megaitem span {
+	background: url(arrow.png) no-repeat left center;
+	padding-left: 10px;
+}
+
+.ja-megamenu li.mega a.megaitem {
+	display: block;
+}
+
+.ja-megamenu li.mega:hover {
+	
+}
+
+.ja-megamenu li.mega:hover a,.ja-megamenu li.mega:hover a:hover {
+	text-decoration: underline;
+}
+
+.ja-megamenu li.active a.megaitem {
+	text-decoration: underline;
+}
+
+/* 2nd lv
+-----------------------------------*/
+.ja-megamenu li.havechild .childcontent { /*hide the menu*/
+	display: block;
+	position: absolute;
+	height: auto;
+	left: -999em;
+}
+
+.ja-megamenu li.havechild:hover .childcontent,.ja-megamenu li.over .childcontent
+	{ /*show on parent:hover*/
+	position: absolute;
+	left: auto;
+}
+
+.childcontent {
+	background: #fff;
+	border: 1px solid #ddd;
+	z-index: 999;
+	color: #333;
+}
+
+/* 2nd lv content ---*/
+.childcontent .inner {
+	padding: 15px !important;
+}
