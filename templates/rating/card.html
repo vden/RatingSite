@@ -37,13 +37,14 @@
 <h3>Информация о владельце</h3>
 
 {% ifequal request.user.id my.0.article__blog__owner__id %}
+{% if request.user.is_authenticated %}
 
 Вы владелец и можете редактировать эту информацию:
 
 <textarea>
 Информация о владельце
 </textarea>
-
+{% endif %}
 {% else %}
 
 <div>
