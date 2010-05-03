@@ -24,8 +24,8 @@
 	
 </table>
 
+{% if request.user.is_authenticated %}
 {% if not in_top %}
-
 {% if not my %}
 
 <h3>Вашего блога ({{request.session.openid_name|urlize}}) пока нет в рейтинге.</h3>
@@ -52,6 +52,7 @@
 
 </table>
 
+{% endif %}
 {% endif %}
 {% endif %}
 

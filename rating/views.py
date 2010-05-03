@@ -20,18 +20,21 @@ def index(request):
 
 	atoms = zip(*atoms)
 
-	in_top = request.session["openid_name"] in [ x.blog.url for x in main_atoms ]
-
 	my = []
-	if not in_top:
-		st = StatAtom.objects.order_by('-value').filter(category__name = 'comments',blog__url = request.session["openid_name"])
+	in_top = True
 
-		if not len(st): my = None
-		else:
-			my.append( st[0] )
+	if request.session.has_key("openid_name"):
+		in_top = request.session["openid_name"] in [ x.blog.url for x in main_atoms ]
 
-			for c in cats:
-				st = StatAtom.objects.filter(blog__url = request.session["openid_name"], category__name=c)
-				my.extend ( [ st[0], ] )
+		if not in_top:
+			st = StatAtom.objects.order_by('-value').filter(category__name = 'comments',blog__url = request.session["openid_name"])
+
+			if not len(st): my = None
+			else:
+				my.append( st[0] )
+
+				for c in cats:
+					st = StatAtom.objects.filter(blog__url = request.session["openid_name"], category__name=c)
+					my.extend ( [ st[0], ] )
 
 	return render_to_response("rating/index.html", {'atoms': atoms, 'in_top': in_top, 'my': my}, context_instance=RequestContext(request))
