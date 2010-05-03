@@ -11,3 +11,9 @@ table.rating {
 table.rating td { 
 	padding: 2px;
 }
+
+div.message { 
+	padding: 0.4em;
+	background-color: #ffd700;
+	border: 1px solid #ff4500;
+}

@@ -10,7 +10,7 @@
 	{% for i in atoms %}
 	<tr {% ifequal request.session.openid_name i.0.blog.url  %}class="my-blog"{% endifequal %}>
 	  <td>{{ forloop.counter }}</td>
-	  <td>{{ i.0.blog.url|urlize }}</td>
+	  <td><a href="{% url rating_card i.0.blog.id %}">{{ i.0.blog.url }}</a></td>
 	  {% for v in i %}
 	  <td>{{ v.value|int_filter }}</td>
 	  {% endfor %}
@@ -40,7 +40,7 @@
                               <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td></tr>
 	<tr {% ifequal request.session.openid_name my.blog.url  %}class="my-blog"{% endifequal %}>
 	  <td>XXX</td>
-	  <td>{{ my.0.blog.url|urlize }}</td>
+	  <td><a href="{% url rating_card my.0.blog.id %}">{{ my.0.blog.url }}</a></td>
 	  {% for v in my %}
 	  <td>{{ v.value|int_filter }}</td>
 	  {% endfor %}

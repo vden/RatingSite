@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 	url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': "/"}, name="core_logout"),
 
 	(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-#	(r'^', include('core.urls')),
+
 	url(r'^$', 'core.views.index', name="core_index"),
 	url(r'^', include('cms.urls')),	
 )
