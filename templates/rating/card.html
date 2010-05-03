@@ -35,16 +35,16 @@
 </table>
 
 <h3>Информация о владельце</h3>
+{% if request.user.is_authenticated %}
 
 {% ifequal request.user.id my.0.article__blog__owner__id %}
-{% if request.user.is_authenticated %}
 
 Вы владелец и можете редактировать эту информацию:
 
 <textarea>
 Информация о владельце
 </textarea>
-{% endif %}
+
 {% else %}
 
 <div>
@@ -54,8 +54,15 @@
 Информация о владельце
 
 {% endifequal %}
+
+{% else %}
+
+Информация о владельце
+
 {% endif %}
 
+
+{% endif %}
 {% endblock %}
 
 {% block right_column %}
