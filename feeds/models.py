@@ -33,9 +33,9 @@ class IndexedArticle(models.Model):
 
 class StatAtom(models.Model):
 	category = models.ForeignKey(StatCategory, verbose_name=u"Category name")
-	blog = models.ForeignKey(IndexedBlog, verbose_name=u"Blog")
+	article = models.ForeignKey(IndexedArticle, verbose_name=u"Article")
 	value = models.FloatField(u"Stat value", default=0)
-	updated = models.DateTimeField(u"Last updated")
+#	updated = models.DateTimeField(u"Last updated")
 	
 	def update_value(self, v, d):
 		if not self.updated or d > self.updated:

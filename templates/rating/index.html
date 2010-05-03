@@ -8,11 +8,11 @@
   <tr>                        <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td><td>±</td>
                               <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td></tr>
 	{% for i in atoms %}
-	<tr {% ifequal request.session.openid_name i.0.blog.url  %}class="my-blog"{% endifequal %}>
+	<tr {% ifequal request.session.openid_name i.0.article__blog__url  %}class="my-blog"{% endifequal %}>
 	  <td>{{ forloop.counter }}</td>
-	  <td><a href="{% url rating_card i.0.blog.id %}">{{ i.0.blog.url }}</a></td>
+	  <td><a href="{% url rating_card i.0.article__blog %}">{{ i.0.article__blog__url }}</a></td>
 	  {% for v in i %}
-	  <td>{{ v.value|int_filter }}</td>
+	  <td>{% table_value v.value i.0.article__blog forloop.counter0 %}</td>
 	  {% endfor %}
 	  <td class="up">&uarr;</td>
 	  <td>0</td>
@@ -38,11 +38,11 @@
   <tr><td rowspan="2">#</td><td rowspan="2">Блог</td><td colspan="4">Текущий месяц</td><td colspan="3">Прошлый месяц</td></tr>
   <tr>                        <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td><td>±</td>
                               <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td></tr>
-	<tr {% ifequal request.session.openid_name my.blog.url  %}class="my-blog"{% endifequal %}>
+	<tr>
 	  <td>XXX</td>
-	  <td><a href="{% url rating_card my.0.blog.id %}">{{ my.0.blog.url }}</a></td>
+	  <td><a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__url }}</a></td>
 	  {% for v in my %}
-	  <td>{{ v.value|int_filter }}</td>
+	  <td>{% table_value v.value my.0.article__blog forloop.counter0 %}</td>
 	  {% endfor %}
 	  <td class="up">&uarr;</td>
 	  <td>0</td>

@@ -8,7 +8,7 @@
 <div class="message">{{ message }}</div>
 {% endif %}
 
-<h2>Страница блога {{my.0.article__blog__url|urlize}}</h2>
+<h2>История рейтинга блога {{my.0.article__blog__url|urlize}}, категория: {{ category_id }}</h2>
 
 {% if not my %}
 
@@ -34,27 +34,21 @@
 
 </table>
 
-<h3>Информация о владельце</h3>
+<h3>Учтенные статьи</h3>
 
-{% ifequal request.user.id my.0.article__blog__owner__id %}
+<table class="rating" border="1">
+  <tr><td>#</td><td>Дата</td><td>Статья</td><td>Статистика</td></tr>
+{% for i in info %}
 
-Вы владелец и можете редактировать эту информацию:
+  <tr><td>{{ forloop.counter}}</td>
+  <td>{{ i.article.pubdate }}</td>
+  <td><a href="{{ i.article.link }}">{{ i.article.title }}</a></td>
+  <td>{{ i.stats.value|int_filter }}</td>
+  
+{% endfor %}
+</table>
 
-<textarea>
-Информация о владельце
-</textarea>
-
-{% else %}
-
-<div>
-<a href="/rating/card/{{my.0.article__blog}}/take/">Это мой блог!</a>
-</div>
-
-Информация о владельце
-
-{% endifequal %}
 {% endif %}
-
 {% endblock %}
 
 {% block right_column %}

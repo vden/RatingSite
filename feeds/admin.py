@@ -17,6 +17,6 @@ class StatCategoryAdmin(admin.ModelAdmin):
 admin.site.register(StatCategory, StatCategoryAdmin)
 
 class StatAtomAdmin(admin.ModelAdmin):
-	list_display = ('category', "value", "updated")
+	list_display = ('category', "value")
 	search_fields = ['blog',]
 admin.site.register(StatAtom, StatAtomAdmin)

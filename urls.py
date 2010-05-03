@@ -6,6 +6,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+
 	(r'^rating/', include('rating.urls')),
 	(r'^news/', include('news.urls')),
 	(r'^graphic/', include('graphic.urls')),
