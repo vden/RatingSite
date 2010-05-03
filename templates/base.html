@@ -395,28 +395,11 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
       </div>
 <!-- //HEADER -->
 <!-- MAIN NAVIGATION -->
-
+{% load cms_tags %}
       <div id="ja-mainnav" class="wrap">
         <div class="main clearfix">
           <ul id="ja-cssmenu" class="clearfix">
-            <li class="active"><a href="http://it-found.org/index.php?option=com_communitypolls&amp;view=polls&amp;layout=home&amp;Itemid=419" class="menu-item0 first-item" id="menu419" title="Рейтинги"><span class="menu-title">Рейтинги</span></a></li>
-            <li class="active"><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=394&amp;Itemid=611" class="menu-item1" id="menu611" title="Новости"><span class="menu-title">Новости</span></a></li>
-            <li class="havechild menu-item2"><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=394&amp;Itemid=620" class="menu-item2 haschild" id="menu620" title="Секреты успеха"><span class="menu-title">Секреты успеха</span></a>
-              <ul>
-                <li class="active"><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=397&amp;Itemid=621" class=" first-item" id="menu621" title="Консультации"><span class="menu-title">Консультации</span></a></li> 
-                <li><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=392&amp;Itemid=622" id="menu622" title="Обучение"><span class="menu-title">Обучение</span></a></li>
-                <li class="active"><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=394&amp;Itemid=623" class=" last-item" id="menu623" title="Новейшие технологии"><span class="menu-title">Новейшие технологии</span></a></li> 
-              </ul>
-            </li> 
-            <li class="active"><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=394&amp;Itemid=612" class="menu-item3" id="menu612" title="Каталог"><span class="menu-title">Каталог</span></a></li>
-            <li class="havechild menu-item4 active last-item"><a href="http://it-found.org/" class="menu-item4 active last-item haschild" id="menu400" title="О проекте"><span class="menu-title">О проекте</span></a>
-              <ul>
-                <li class="active"><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=395&amp;Itemid=401" class=" first-item" id="menu401" title="Для кого и зачем наш проект"><span class="menu-title">Для кого и зачем наш проект</span></a></li> 
-                <li><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=394&amp;Itemid=490" id="menu490" title="Попечительский совет проекта"><span class="menu-title">Попечительский совет проекта</span></a></li> 
-                <li><a href="http://it-found.org/index.php?option=com_content&amp;view=category&amp;layout=blog&amp;id=29&amp;Itemid=403" id="menu403" title="Экспертный совет проекта"><span class="menu-title">Экспертный совет проекта</span></a></li> 
-                <li class="active"><a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=394&amp;Itemid=624" class=" last-item" id="menu624" title="Партнеры"><span class="menu-title">Партнеры</span></a></li> 
-              </ul>
-            </li> 
+            {% show_menu 1 2 100 100 %}
           </ul>
         </div>
       </div>
@@ -508,6 +491,8 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 
                           <div class="article-content">
 
+							{% placeholder "content" %}
+							
 <h3 style="text-align: right;"><strong><em>Если Вас не видят, Вы не 
 существуете.</em></strong></h3>
 <p>Миссия нашего сайта – показать, каким Вас видят сегодня и каким 
