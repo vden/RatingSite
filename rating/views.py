@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
-from feeds.models import StatAtom, IndexedBlog, IndexedArticle
+from feeds.models import StatAtom, IndexedBlog, IndexedArticle, BlogInfoForm
 from rating.models import TakeRequest
 from django.db.models import Sum
 
@@ -51,7 +51,7 @@ def card(request, blog_id):
 	my = []
 	cats = [ 'commenters', 'links' ]
 
-	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id").annotate(value=Sum("value"))
+	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__description").annotate(value=Sum("value"))
 
 	if not len(st): my = None
 	else:
@@ -60,7 +60,23 @@ def card(request, blog_id):
 			st = StatAtom.objects.filter(article__blog = blog, category__name=c).values("article__blog").annotate(value=Sum("value")) 
 			my.extend ( [ st[0], ] )
 
-	return render_to_response("rating/card.html", {'my': my, 'message': message}, context_instance=RequestContext(request))
+	form = BlogInfoForm(instance=blog)
+
+	return render_to_response("rating/card.html", {'my': my, 'message': message, "form": form}, context_instance=RequestContext(request))
+
+def save_info(request, blog_id):
+	blog = get_object_or_404(IndexedBlog, id=blog_id)
+	frm = BlogInfoForm(request.POST, instance=blog)
+	
+	try:
+		frm.save()
+	except:
+		print "ERR" 	
+	print frm.cleaned_data
+		
+	message = u"Description updated."
+	
+	return HttpResponseRedirect("/rating/card/%s/?message=%s"%(blog_id, message))
 
 def take(request, blog_id):
 	blog = get_object_or_404(IndexedBlog, id=blog_id)

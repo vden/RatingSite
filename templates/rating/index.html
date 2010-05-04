@@ -2,6 +2,10 @@
 
 {% load int %}
 
+{% block title %}
+Рейтинг блогов
+{% endblock %}
+
 {% block content %}
 <table class="rating" border="1">
   <tr><td rowspan="2">#</td><td rowspan="2">Блог</td><td colspan="4">Текущий месяц</td><td colspan="3">Прошлый месяц</td></tr>
@@ -39,7 +43,7 @@
   <tr>                        <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td><td>±</td>
                               <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td></tr>
 	<tr>
-	  <td>XXX</td>
+	  <td></td>
 	  <td><a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__url }}</a></td>
 	  {% for v in my %}
 	  <td>{% table_value v.value my.0.article__blog forloop.counter0 %}</td>

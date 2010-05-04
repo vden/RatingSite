@@ -176,8 +176,8 @@ JANewSticker = new Class( {
 			}  
 		} else {
 			if( runningMode == 'next' ) {
-				this.fx2[this.options.previousIndex].start(1,0);	
-				this.fx2[this.options.currentIndex].start(0,1);
+				//this.fx2[this.options.previousIndex].start(1,0);	
+				//this.fx2[this.options.currentIndex].start(0,1);
 			} else {
 				this.fx2[this.options.nextIndex].start(1,0);
 				this.fx2[this.options.currentIndex].start(0,1);

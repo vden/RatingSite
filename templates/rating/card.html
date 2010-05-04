@@ -2,13 +2,17 @@
 
 {% load int %}
 
+{% block title %}
+Страница блога {{ my.0.article__blog__url }}
+{% endblock %}
+
 {% block content %}
 
 {% if message %}
 <div class="message">{{ message }}</div>
 {% endif %}
 
-<h2>Страница блога {{my.0.article__blog__url|urlize}}</h2>
+<h2>Страница блога <a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__url }}</a></h2>
 
 {% if not my %}
 
@@ -21,7 +25,7 @@
   <tr>                        <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td><td>±</td>
                               <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td></tr>
 	<tr>
-	  <td>XXX</td>
+	  <td></td>
 	  <td>{{ my.0.article__blog__url|urlize }}</td>
 	  {% for v in my %}
 	  <td>{% table_value v.value my.0.article__blog forloop.counter0 %}</td>
@@ -35,15 +39,20 @@
 </table>
 
 <h3>Информация о владельце</h3>
+{% autoescape off %}
 {% if request.user.is_authenticated %}
 
 {% ifequal request.user.id my.0.article__blog__owner__id %}
 
-Вы владелец и можете редактировать эту информацию:
+Вы владелец блога и можете редактировать эту информацию:
 
-<textarea>
-Информация о владельце
-</textarea>
+<form action="{% url save-info my.0.article__blog %}" method="POST">
+{{ form }}
+
+<input type="submit" value="Сохранить"/>
+</form>
+
+{{ my.0.article__blog__description }}
 
 {% else %}
 
@@ -51,17 +60,17 @@
 <a href="/rating/card/{{my.0.article__blog}}/take/">Это мой блог!</a>
 </div>
 
-Информация о владельце
+{{ my.0.article__blog__description }}
 
 {% endifequal %}
 
 {% else %}
 
-Информация о владельце
+{{ my.0.article__blog__description }}
 
 {% endif %}
 
-
+{% endautoescape %}
 {% endif %}
 {% endblock %}
 

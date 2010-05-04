@@ -1,15 +1,27 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from core.accounts import Profile
 import string
 from django.contrib.auth.models import User
+from tinymce import models as tinymce_models
+
+from django import forms
 
 class IndexedBlog(models.Model):
 	url = models.URLField(u"Blog URL", verify_exists=False, max_length=1024)
 	owner = models.ForeignKey(User, verbose_name=u"Blog owner", blank=True, null=True)
 	
+	description = tinymce_models.HTMLField(u"Описание")
+
 	def __unicode__(self):
 		return self.url
-	
+
+class BlogInfoForm(forms.ModelForm):
+	class Meta:
+		model = IndexedBlog
+		fields = ["description", ]
+
 class StatCategory(models.Model):
 	name = models.CharField(u"Category name", max_length=256)
 	# links, links24, visits etc

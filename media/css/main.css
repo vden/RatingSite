@@ -10,10 +10,20 @@ table.rating {
 
 table.rating td { 
 	padding: 2px;
+	border: 1px solid black;
 }
 
 div.message { 
 	padding: 0.4em;
 	background-color: #ffd700;
 	border: 1px solid #ff4500;
+}
+
+#id_description_tbl { 
+	width: 98% ! important;
+	height: 10em ! important;
+}
+
+tr.mceLast td.mceLast, #id_description_ifr {  
+	height: 10em ! important;
 }
