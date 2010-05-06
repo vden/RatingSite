@@ -87,7 +87,7 @@ def take(request, blog_id):
 			blog.save()
 			message = u"This page is yours now."
 		else:
-			tr = TakeRequest.objects.create(author = request.user, blog = blog, description = u"")
+			tr = TakeRequest.objects.create(author = request.user, blog = blog, description = request.POST.get("message", u""))
 			tr.save()
 			message = u"Your request sent to moderator. You'll be notified for moderator's review on your request."
 
@@ -95,6 +95,22 @@ def take(request, blog_id):
 		message = u"First log in, please."
 
 	return HttpResponseRedirect("/rating/card/%s/?message=%s"%(blog_id, message))
+
+def approve_request(request, rid):
+	req = get_object_or_404(TakeRequest, id=rid)
+	
+	req.blog.owner = req.author
+	req.blog.save()
+	req.delete()
+
+	return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+
+def reject_request(request, rid):
+	req = get_object_or_404(TakeRequest, id=rid)
+	
+	req.delete()
+
+	return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))	
 
 def articles(request, blog_id, category_id):
 	blog = get_object_or_404(IndexedBlog, id=blog_id)

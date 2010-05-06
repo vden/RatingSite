@@ -44,6 +44,9 @@
 
 {% ifequal request.user.id my.0.article__blog__owner__id %}
 
+<a href="javascript:;" style="border-bottom:1px dashed;text-decoration:none" onClick="var d=document.getElementById('edit-my');if(d.style.display=='none'){d.style.display='';}else{d.style.display='none';};">Редактировать</a>
+
+<div style="display:none" id="edit-my">
 Вы владелец блога и можете редактировать эту информацию:
 
 <form action="{% url save-info my.0.article__blog %}" method="POST">
@@ -51,22 +54,34 @@
 
 <input type="submit" value="Сохранить"/>
 </form>
+</div>
 
-{{ my.0.article__blog__description }}
+{{ my.0.article__blog__description|default:"" }}
 
 {% else %}
 
 <div>
-<a href="/rating/card/{{my.0.article__blog}}/take/">Это мой блог!</a>
+<a href="javascript:;" style="border-bottom:1px dashed;text-decoration:none" onClick="var d=document.getElementById('take-my');if(d.style.display=='none'){d.style.display='';}else{d.style.display='none';};">Это мой блог!</a>
+
+<div style="display:none" id="take-my">
+  Ваш OpenID не соответствует адресу этого блога. Если это действительно Ваш блог, то для того чтобы получить контроль над этой страницей, опишите, как модераторы могут связаться с Вами для проверки. Спасибо.
+ <div>
+   <form action="/rating/card/{{my.0.article__blog}}/take/" method="POST">
+   <textarea id="message" name="message" style="width: 60%; height: 8em"></textarea></div>
+  
+   <input type="submit" value="Отправить заявку">
+   </form>
 </div>
 
-{{ my.0.article__blog__description }}
+</div>
+
+{{ my.0.article__blog__description|default:"" }}
 
 {% endifequal %}
 
 {% else %}
 
-{{ my.0.article__blog__description }}
+{{ my.0.article__blog__description|default:"" }}
 
 {% endif %}
 
