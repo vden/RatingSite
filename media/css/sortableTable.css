@@ -57,8 +57,7 @@ td {
 }*/
 
 tr.over {
-	background-color: #ddd;
-	cursor: pointer;
+	background-color: #eee;
 }
 
 tr.hide {
