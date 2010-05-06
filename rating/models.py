@@ -16,7 +16,7 @@ class TakeRequest(models.Model):
 		uoid = UserOpenID.objects.filter(user=self.author)
 		if not len(uoid): return u""
 		else:
-			return uoid[0].claimed_id
+			return uoid[0].claimed_id      
 
 	def approve_link(self):
 		return """<a href="%s"><span style="color:green">Approve</span></a>"""%reverse("approve-request", args=[self.id,])

@@ -12,7 +12,7 @@
 <div class="message">{{ message }}</div>
 {% endif %}
 
-<h2>Страница блога <a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__url }}</a></h2>
+<h2>Страница блога <a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__owner_name|default:my.0.article__blog__url }}</a></h2>
 
 {% if not my %}
 
@@ -44,6 +44,7 @@
 
 {% ifequal request.user.id my.0.article__blog__owner__id %}
 
+{% if 0 %}
 <a href="javascript:;" style="border-bottom:1px dashed;text-decoration:none" onClick="var d=document.getElementById('edit-my');if(d.style.display=='none'){d.style.display='';}else{d.style.display='none';};">Редактировать</a>
 
 <div style="display:none" id="edit-my">
@@ -55,6 +56,8 @@
 <input type="submit" value="Сохранить"/>
 </form>
 </div>
+
+{% endif %}
 
 {{ my.0.article__blog__description|default:"" }}
 

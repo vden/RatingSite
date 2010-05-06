@@ -14,7 +14,7 @@
 	{% for i in atoms %}
 	<tr {% ifequal request.session.openid_name i.0.article__blog__url  %}class="my-blog"{% endifequal %}>
 	  <td>{{ forloop.counter }}</td>
-	  <td><a href="{% url rating_card i.0.article__blog %}">{{ i.0.article__blog__url }}</a></td>
+	  <td><a href="{% url rating_card i.0.article__blog %}">{{ i.0.article__blog__owner_name|default:i.0.article__blog__url }}</a></td>
 	  {% for v in i %}
 	  <td> {% table_value v.value i.0.article__blog forloop.counter0 %}</td> 
 	  {% endfor %}
@@ -44,7 +44,7 @@
                               <td>Комментарии</td><td>Комментаторы</td><td>Ссылки</td></tr>
 	<tr>
 	  <td></td>
-	  <td><a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__url }}</a></td>
+	  <td><a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__owner_name|default:my.0.article__blog__url }}</a></td>
 	  {% for v in my %}
 	  <td>{% table_value v.value my.0.article__blog forloop.counter0 %}</td>
 	  {% endfor %}

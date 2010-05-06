@@ -10,7 +10,7 @@ def index(request):
 	cats = [ 'commenters', 'links']
 	atoms = []
 
-	main_atoms =  StatAtom.objects.filter(category__name = 'comments').values("article__blog__url", "article__blog").annotate(value=Sum("value")).order_by('-value')[:20]
+	main_atoms =  StatAtom.objects.filter(category__name = 'comments').values("article__blog__url", "article__blog", "article__blog__owner_name").annotate(value=Sum("value")).order_by('-value')[:20]
 #	main_atoms = [ x["dval"] for x in main_atoms  ]
 
 	atoms.append(main_atoms)
@@ -32,7 +32,7 @@ def index(request):
 		in_top = request.session["openid_name"] in [ x["article__blog__url"] for x in main_atoms ]
 
 		if not in_top:
-			st = StatAtom.objects.filter(category__name = 'comments',article__blog__url = request.session["openid_name"]).values("article__blog", "article__blog__url").annotate(value=Sum("value"))
+			st = StatAtom.objects.filter(category__name = 'comments',article__blog__url = request.session["openid_name"]).values("article__blog", "article__blog__url", "article__blog__owner_name").annotate(value=Sum("value"))
 
 			if not len(st): my = None
 			else:
@@ -51,7 +51,7 @@ def card(request, blog_id):
 	my = []
 	cats = [ 'commenters', 'links' ]
 
-	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__description").annotate(value=Sum("value"))
+	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__description", "article__blog__owner_name").annotate(value=Sum("value"))
 
 	if not len(st): my = None
 	else:
@@ -122,7 +122,7 @@ def articles(request, blog_id, category_id):
 	my = []
 	cats = [ 'commenters', 'links' ]
 
-	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id").annotate(value=Sum("value"))
+	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__owner_name").annotate(value=Sum("value"))
 
 	if not len(st): my = None
 	else:

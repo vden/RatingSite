@@ -11,11 +11,11 @@ from django import forms
 class IndexedBlog(models.Model):
 	url = models.URLField(u"Blog URL", verify_exists=False, max_length=1024)
 	owner = models.ForeignKey(User, verbose_name=u"Blog owner", blank=True, null=True)
-	
+	owner_name = models.CharField(u"Owner name", max_length = 255, blank=True, null=True)
 	description = tinymce_models.HTMLField(u"Описание")
 
 	def __unicode__(self):
-		return self.url
+		return self.owner_name or self.url
 
 class BlogInfoForm(forms.ModelForm):
 	class Meta:

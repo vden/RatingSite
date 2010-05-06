@@ -12,7 +12,7 @@
 <div class="message">{{ message }}</div>
 {% endif %}
 
-<h2>История рейтинга блога <a href="{% url rating_card my.0.article__blog %}">{{my.0.article__blog__url}}</a>, категория: {{ category_id }}</h2>
+<h2>История рейтинга блога <a href="{% url rating_card my.0.article__blog %}">{{ my.0.article__blog__owner_name|default:my.0.article__blog__url }}</a>, категория: {{ category_id }}</h2>
 
 {% if not my %}
 
