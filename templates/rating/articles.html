@@ -40,8 +40,8 @@
 
 <h3>Учтенные записи</h3>
 
-<table class="rating" border="1">
-  <tr><td>#</td><td>Дата</td><td>Запись</td><td>Статистика</td></tr>
+<table class="rating" id="rating-table-articles" border="1">
+  <thead><th axis="number">#</th><th axis="date">Дата</th><th>Запись</th><th axis="number">Статистика</th></thead>
 {% for i in info %}
 
   <tr><td>{{ forloop.counter}}</td>
