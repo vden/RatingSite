@@ -23,6 +23,8 @@ class Picture(CMSPlugin):
     alt = models.CharField(_("alternate text"), max_length=255, blank=True, null=True, help_text=_("textual description of the image"))
     longdesc = models.CharField(_("long description"), max_length=255, blank=True, null=True, help_text=_("additional description of the image"))
     float = models.CharField(_("side"), max_length=10, blank=True, null=True, choices=FLOAT_CHOICES)
+    width = models.IntegerField(_("width"),  blank=True, null=True)
+    height = models.IntegerField(_("height"),  blank=True, null=True)
     
     def __unicode__(self):
         if self.alt:
