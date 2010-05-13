@@ -10,7 +10,7 @@ urlpatterns = patterns('',
 	(r'^rating/', include('rating.urls')),
 	(r'^news/', include('news.urls')),
 	(r'^graphic/', include('graphic.urls')),
-    (r'^tinymce/', include('tinymce.urls')),
+	(r'^tinymce/', include('tinymce.urls')),
 
 	(r'^admin/', include(admin.site.urls)),
 	(r'^openid/', include('django_openid_auth.urls')),

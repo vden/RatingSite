@@ -137,4 +137,4 @@ def articles(request, blog_id, category_id):
 	return render_to_response("rating/articles.html", {'my': my, 'info': r, "category_id": category_id}, context_instance=RequestContext(request))
 
 def archive(request):
-	pass
+	return render_to_response(u"rating/index.html", {})
