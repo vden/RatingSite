@@ -13,6 +13,7 @@ class IndexedBlog(models.Model):
 	owner = models.ForeignKey(User, verbose_name=u"Blog owner", blank=True, null=True)
 	owner_name = models.CharField(u"Owner name", max_length = 255, blank=True, null=True)
 	description = tinymce_models.HTMLField(u"Описание")
+	published = models.BooleanField(u"Отображать в рейтинге", default=False)	
 
 	def __unicode__(self):
 		return self.owner_name or self.url

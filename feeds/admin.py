@@ -2,8 +2,9 @@ from django.contrib import admin
 from feeds.models import *
 
 class IndexedBlogAdmin(admin.ModelAdmin):
-	list_display = ('url', 'owner')
-	search_fields = ['url',]
+	list_display = ('url', 'owner', 'published')
+	search_fields = ['url', 'owner_name']
+	list_filter = [ 'published']
 admin.site.register(IndexedBlog, IndexedBlogAdmin)
 
 

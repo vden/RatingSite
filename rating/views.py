@@ -10,14 +10,14 @@ def index(request):
 	cats = [ 'commenters', 'links']
 	atoms = []
 
-	main_atoms =  StatAtom.objects.filter(category__name = 'comments').values("article__blog__url", "article__blog", "article__blog__owner_name").annotate(value=Sum("value")).order_by('-value')[:20]
+	main_atoms =  StatAtom.objects.filter(category__name = 'comments', article__blog__published=True).values("article__blog__url", "article__blog", "article__blog__owner_name").annotate(value=Sum("value")).order_by('-value')[:20]
 #	main_atoms = [ x["dval"] for x in main_atoms  ]
 
 	atoms.append(main_atoms)
 	for c in cats: 
 		r = []
 		for b in [x["article__blog"] for x in atoms[0]]:
-			sss = StatAtom.objects.filter(article__blog=b, category__name=c).values("article__blog").annotate(value=Sum("value"))[0]
+			sss = StatAtom.objects.filter(article__blog=b, category__name=c, article__blog__published=True).values("article__blog").annotate(value=Sum("value"))[0]
 			r.append(sss)
 		atoms.append( r )
 
@@ -32,14 +32,14 @@ def index(request):
 		in_top = request.session["openid_name"] in [ x["article__blog__url"] for x in main_atoms ]
 
 		if not in_top:
-			st = StatAtom.objects.filter(category__name = 'comments',article__blog__url = request.session["openid_name"]).values("article__blog", "article__blog__url", "article__blog__owner_name").annotate(value=Sum("value"))
+			st = StatAtom.objects.filter(category__name = 'comments',article__blog__url = request.session["openid_name"], article__blog__published=True).values("article__blog", "article__blog__url", "article__blog__owner_name").annotate(value=Sum("value"))
 
 			if not len(st): my = None
 			else:
 				my.append( st[0] )
 
 				for c in cats:
-					st = StatAtom.objects.filter(article__blog__url = request.session["openid_name"], category__name=c).values("article__blog").annotate(value=Sum("value")) 
+					st = StatAtom.objects.filter(article__blog__url = request.session["openid_name"], category__name=c, article__blog__published=True).values("article__blog").annotate(value=Sum("value")) 
 					my.extend ( [ st[0], ] )
 					
 	return render_to_response("rating/index.html", {'atoms': atoms, 'in_top': in_top, 'my': my}, context_instance=RequestContext(request))
@@ -51,13 +51,13 @@ def card(request, blog_id):
 	my = []
 	cats = [ 'commenters', 'links' ]
 
-	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__description", "article__blog__owner_name").annotate(value=Sum("value"))
+	st = StatAtom.objects.filter(category__name = 'comments', article__blog__published=True, article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__description", "article__blog__owner_name").annotate(value=Sum("value"))
 
 	if not len(st): my = None
 	else:
 		my.append( st[0] )
 		for c in cats:
-			st = StatAtom.objects.filter(article__blog = blog, category__name=c).values("article__blog").annotate(value=Sum("value")) 
+			st = StatAtom.objects.filter(article__blog = blog, category__name=c, article__blog__published=True).values("article__blog").annotate(value=Sum("value")) 
 			my.extend ( [ st[0], ] )
 
 	form = BlogInfoForm(instance=blog)
@@ -122,17 +122,17 @@ def articles(request, blog_id, category_id):
 	my = []
 	cats = [ 'commenters', 'links' ]
 
-	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__owner_name").annotate(value=Sum("value"))
+	st = StatAtom.objects.filter(category__name = 'comments', article__blog = blog, article__blog__published=True).values("article__blog", "article__blog__url", "article__blog__owner__id", "article__blog__owner_name").annotate(value=Sum("value"))
 
 	if not len(st): my = None
 	else:
 		my.append( st[0] )
 		for c in cats:
-			st = StatAtom.objects.filter(article__blog = blog, category__name=c).values("article__blog").annotate(value=Sum("value")) 
+			st = StatAtom.objects.filter(article__blog = blog, category__name=c, article__blog__published=True).values("article__blog").annotate(value=Sum("value")) 
 			my.extend ( [ st[0], ] )
 
 	for a in articles:
-		r.append( {'article': a, 'stats': StatAtom.objects.get(article = a, category__name = category_id)} )
+		r.append( {'article': a, 'stats': StatAtom.objects.get(article = a, category__name = category_id, article__blog__published=True)} )
 
 	return render_to_response("rating/articles.html", {'my': my, 'info': r, "category_id": category_id}, context_instance=RequestContext(request))
 
