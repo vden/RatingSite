@@ -3,7 +3,7 @@
 {% load int %}
 
 {% block title %}
-История рейтинга блога {{my.0.article__blog__url}}, категория: {{ category_id }} &mdash; Лаборатория VIP PR
+История рейтинга блога {{ my.0.article__blog__owner_name|default:my.0.article__blog__url}}, категория: {{ category_id }} &mdash; Лаборатория VIP PR
 {% endblock %}
 
 {% block content %}
