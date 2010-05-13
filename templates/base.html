@@ -5,7 +5,7 @@
   <meta name="title" content="Об Агентстве">
   <meta name="author" content="Administrator">
 
-  <title>{% block title %}{{ title }}{% endblock %}</title>
+  <title>{% block title %}{{ request.current_page.get_title }}{% if request.current_page %} &mdash; {% endif %}VIP PR{% endblock %}</title>
 
   <link href="http://it-found.org/templates/ja_teline_iii/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link rel="stylesheet" href="/media/css/style_002.css" type="text/css">
@@ -342,6 +342,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 <!-- //HEADER -->
 <!-- MAIN NAVIGATION -->
 {% load cms_tags %}
+	  {% block mainnav %}
       <div id="ja-mainnav" class="wrap">
         <div class="main clearfix">
           <ul id="ja-cssmenu" class="clearfix">
@@ -349,7 +350,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
           </ul>
         </div>
       </div>
-
+	  {% endblock %}
       <div class="ja-navhelper wrap">
         <div class="main clearfix">
 		  {% block crumbs %}
@@ -526,9 +527,9 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
         <div class="main">
           <div class="ja-footnav clearfix">
             <ul id="mainlevel-nav">
-              <li class="ja-firstitem"><a href="#" class="mainlevel-nav">О НАС</a></li>
+              <li class="ja-firstitem"><a href="{% page_id_url 'about-us' %}" class="mainlevel-nav">О НАС</a></li>
               <li><a href="#" class="mainlevel-nav">Правовая информация</a></li>
-              <li><a href="/contacts/" class="mainlevel-nav">Контакты</a></li>
+              <li><a href="{% page_id_url 'contacts-page' %}" class="mainlevel-nav">Контакты</a></li>
             </ul>
 
             <ul class="ja-links">
@@ -560,3 +561,4 @@ window.addEvent('domready', function(){
 
   </body>
 </html>
+

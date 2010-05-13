@@ -92,6 +92,16 @@
 информации! Рейтинг – не конец, а начало пути.
 </p>
 
+{% load cms_tags %}
+
+<p>
+<a href='{% page_id_url "comments-page" %}'>Комментарии экспертов</a> по текущему рейтингу.
+</p>
+
+<p>
+<a href="{% url rating-archive %}">Архив рейтингов</a>.
+</p>
+
 {% endblock %}
 
 {% block right_column %}

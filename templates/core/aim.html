@@ -11,23 +11,6 @@
 
 							{% placeholder "content" %}
 
-							<h4>Новости</h4>
-								<table class="w100">
-									<tr>
-					{% for n in news|slice:":3" %}
-										<td valign="top">
-											<div class="news_img"><img src="{% thumbnail n.photo.name 80x80 upscale %}" width="80" height="80"></div>
-										</td>
-										<td valign="top" class="w50">
-											<div class="news_one">
-												<div class="date"><span>{{ n.date|date }}</span></div>
-												<div class="title"><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></div>
-											</div>
-
-										</td>
-					{% endfor %}
-									</tr>
-									</table>
 
 <span id="jabookmark-container" style="display: block;" class="ja-social-bookmarking">
 

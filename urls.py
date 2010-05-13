@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 
 	(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 
+	url(r'^aim/', 'core.views.aim', {'path': '/'}, name="core_aim"),
 	url(r'^$', 'core.views.index', name="core_index"),
 	url(r'^', include('cms.urls')),	
 )

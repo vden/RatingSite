@@ -8,3 +8,6 @@ from django.template import RequestContext
 
 def index(request):
 	return  render_to_response("core/index.html", {'news': News.last(), 'feed': IndexedArticle.objects.order_by('-pubdate')[:10]}, context_instance=RequestContext(request))
+
+def aim(request, path):
+	return  render_to_response("core/aim.html", {}, context_instance=RequestContext(request))

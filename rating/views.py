@@ -135,3 +135,6 @@ def articles(request, blog_id, category_id):
 		r.append( {'article': a, 'stats': StatAtom.objects.get(article = a, category__name = category_id)} )
 
 	return render_to_response("rating/articles.html", {'my': my, 'info': r, "category_id": category_id}, context_instance=RequestContext(request))
+
+def archive(request):
+	pass

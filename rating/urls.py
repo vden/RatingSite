@@ -8,4 +8,5 @@ urlpatterns = patterns('',
 	url(r'^card/(?P<blog_id>\d+)/save/$', 'rating.views.save_info', name="save-info"),
 	url(r'^request/(?P<rid>\d+)/approve/$', 'rating.views.approve_request', name="approve-request"),
 	url(r'^request/(?P<rid>\d+)/reject/$', 'rating.views.reject_request', name="reject-request"),
+	url(r'^archive/$', 'rating.views.archive', name="rating-archive"),
 )
