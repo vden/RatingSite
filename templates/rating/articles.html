@@ -3,7 +3,7 @@
 {% load int %}
 
 {% block title %}
-История рейтинга блога {{my.0.article__blog__url}}, категория: {{ category_id }}
+История рейтинга блога {{my.0.article__blog__url}}, категория: {{ category_id }} &mdash; Лаборатория VIP PR
 {% endblock %}
 
 {% block content %}
@@ -45,8 +45,8 @@
 {% for i in info %}
 
   <tr><td>{{ forloop.counter}}</td>
-  <td><a href="{{ i.article.link }}">{{ i.article.pubdate }}</a></td>
-  <td><a href="{{ i.article.link }}">{{ i.article.title }}</a></td>
+  <td><a target="_blank" href="{{ i.article.link }}">{{ i.article.pubdate }}</a></td>
+  <td><a target="_blank" href="{{ i.article.link }}">{{ i.article.title }}</a></td>
   <td>{{ i.stats.value|int_filter }}</td>
   
 {% endfor %}
