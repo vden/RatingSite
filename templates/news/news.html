@@ -2,6 +2,8 @@
 
 {% load thumbnail %}
 {% load cms_tags %}
+
+
 {% block mainnav %}
 
 								<div id="menu">
@@ -12,13 +14,15 @@
 									</table>
 								</div>
 {% endblock %}
-
+							
 {% block crumbs %}
-     <div id="crumbs">
-                                                <nobr>
-                                                        <a href="{% url news_index %}">Пресс-центр</a>
-                                                </nobr>
-                                        </div>
+         <div class="ja-breadcrums">
+            <strong>Вы просматриваете:</strong> <span class="breadcrumbs pathway">
+<li><a href="/">Главная</a> &raquo; </li>
+<li><a href="/news/">Пресс-центр</a> &raquo; </li>
+<li>{{ obj.title }}</li>
+</span></div>
+
 {% endblock %}
 
 {% block content %}

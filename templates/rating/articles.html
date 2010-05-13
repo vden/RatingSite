@@ -45,7 +45,7 @@
 {% for i in info %}
 
   <tr><td>{{ forloop.counter}}</td>
-  <td>{{ i.article.pubdate }}</td>
+  <td><a href="{{ i.article.link }}">{{ i.article.pubdate }}</a></td>
   <td><a href="{{ i.article.link }}">{{ i.article.title }}</a></td>
   <td>{{ i.stats.value|int_filter }}</td>
   

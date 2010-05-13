@@ -30,3 +30,7 @@ div.message {
 tr.mceLast td.mceLast, #id_description_ifr {  
 	height: 10em ! important;
 }
+
+span.breadcrumbs li { 
+display: inline;
+ }

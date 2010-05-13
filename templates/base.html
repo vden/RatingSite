@@ -354,7 +354,7 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
         <div class="main clearfix">
 		  {% block crumbs %}
           <div class="ja-breadcrums">
-            <strong>Вы просматриваете:</strong> <span class="breadcrumbs pathway">ГЛАВНАЯ</span>
+            <strong>Вы просматриваете:</strong> <span class="breadcrumbs pathway">{% show_breadcrumb %}</span>
           </div>
 		  {% endblock %}
 
@@ -442,7 +442,6 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
                           <div class="article-content">
 
 							{% placeholder "content" %}
-		
 
 <span id="jabookmark-container" style="display: block;" class="ja-social-bookmarking">
 
@@ -482,62 +481,38 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 {% block bottom %}
       <div id="ja-botsl" class="wrap">
         <div class="main clearfix">
-          <div class="ja-box column ja-box-left" style="width: 20%;">
+          <div class="ja-box column ja-box-left" style="width: 25%;">
             <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod78">
               <h3><span>Контакты</span></h3>
               <div class="ja-box-ct clearfix">
-Телефоны:
-                <ul>
-  <li>8-495-222-86-10</li>
-  <li>8-916-210-21-50</li>
-</ul>
-
-Почта:<ul>
-<li>
-<a href="mailto:info@vipprlab.ru">info@vipprlab.ru</a></li>
-</ul>
+				{% show_placeholder_by_id "content" "contacts-page" %}
               </div>
             </div>
           </div>
 
-          <div class="ja-box column ja-box-center" style="width: 20%;">
+          <div class="ja-box column ja-box-center" style="width: 25%;">
             <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod77">
-              <h3><span>Наши партнеры</span></h3>
+              <h3><span>Справка</span></h3>
                 <div class="ja-box-ct clearfix">
-                  <ul>
-                    <li><a href="#" target="_blank">Praesent ac libero ornare venenatis</a></li>
-                    <li><a href="#" target="_blank">Nunc auctor vel Aenean neque montes</a></li>
-                    <li><a href="#" target="_blank">Et id tortor Cras id nunc montes lobortis lacus et fringilla</a></li>
-                    <li><a href="#" target="_blank">Hendrerit semper eget convallis neque eleifend orci iaculis</a></li>
-                    <li><a href="#" target="_blank">Tortor et laoreet quis Nullam augue justo</a></li>
-                  </ul>
+				  {% show_placeholder_by_id "content" "help-page-short" %}
                 </div>
             </div>
           </div>
 
-          <div class="ja-box column ja-box-center" style="width: 20%;">
+          <div class="ja-box column ja-box-center" style="width: 25%;">
             <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod76">
               <h3><span>Персоналии</span></h3>
               <div class="ja-box-ct clearfix">
-                <p><img src="/media/img/fashion-1.jpg" alt="Fashion" border="0">Pellentesque porttitor Vestibulum Mauris</p>
+			{% show_placeholder_by_id "content" "experts-page" %}
               </div>
             </div>
           </div>
 
-          <div class="ja-box column ja-box-center" style="width: 20%;">
-            <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod75">
-              <h3><span>Sport</span></h3>
-              <div class="ja-box-ct clearfix">
-                <img src="/media/img/sport-1.jpg" alt="Sport">Nulla tincidunt tincidunt <a href="#" title="Sport">velit tristique leo.</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="ja-box column ja-box-right" style="width: 20%;">
+          <div class="ja-box column ja-box-right" style="width: 25%;">
             <div style="height: 277px;" class="ja-moduletable moduletable clearfix" id="Mod133">
-              <h3><span>Подписки</span></h3>
+              <h3><span>Партнеры</span></h3>
               <div class="ja-box-ct clearfix">
-                <p><img src="/media/img/follow.jpg" alt="Follow us" border="0"></p>
+			{% show_placeholder_by_id "content" "partners-page" %}
               </div>
             </div>
           </div>
@@ -553,19 +528,18 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
             <ul id="mainlevel-nav">
               <li class="ja-firstitem"><a href="#" class="mainlevel-nav">О НАС</a></li>
               <li><a href="#" class="mainlevel-nav">Правовая информация</a></li>
-              <li><a href="#" class="mainlevel-nav">Контакты</a></li>
+              <li><a href="/contacts/" class="mainlevel-nav">Контакты</a></li>
             </ul>
 
             <ul class="ja-links">
               <li class="layout-switcher"></li>
-              <li class="user-reset"><a href="/?do=reset_usersetting" title="Reset user setting">Reset user setting</a></li>
               <li class="top"><a href="#Top" title="Back to Top">Верх</a></li>
             </ul>
           </div>
 
           <div class="inner">
             <div class="ja-copyright">
-               <small>© 2010 PR3000. Все права защищены. Powered by <a href="http://design4free.org/" title="joomla">joomla</a>.</small><small><a href="http://www.joomla.org/">Joomla!</a> — свободное программное обеспечение, распространяемое по лицензии <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU/GPL.</a></small>
+               <small>© 2010 PR3000. Все права защищены.</small>
             </div>
           </div>
         </div>
