@@ -59,7 +59,26 @@
           <div class="ja-mass ja-mass-top clearfix">
             <div class="ja-moduletable moduletable  clearfix" id="Mod99">
               <div class="ja-box-ct clearfix">
-                <a href="http://it-found.org/index.php?option=com_content&amp;view=article&amp;id=389:10-things-you-must-know-about-teline-iii" title="What's new in JA Teline iii?"><img src="/media/img/what-new.jpg" alt="What's new in teline iii"></a>
+		<embed src="/media/smallchart.swf" quality="high" bgcolor="#c3cfd2"
+			width="351" height="255" name="chart" align="middle"
+			flashvars="type={{ request.GET.type }}&keyword={{ request.GET.key }}"
+			play="true"
+			loop="false"
+			quality="high"
+			allowScriptAccess="sameDomain"
+			type="application/x-shockwave-flash"
+			pluginspage="http://www.adobe.com/go/getflashplayer">
+		</embed>
+
+		<form method="get" action=".">
+			<select size="1" name="type">
+				<option value="stat">Статистика</option>
+				<option value="blogs">Блоги</option>
+			</select>
+			<input type="text" name="key"><input type="submit" value="Запрос">
+		</form>
+
+
               </div>
             </div>
           </div>
