@@ -58,9 +58,10 @@
 
           <div class="ja-mass ja-mass-top clearfix">
             <div class="ja-moduletable moduletable  clearfix" id="Mod99">
-              <div class="ja-box-ct clearfix">
-		<embed src="/media/smallchart.swf" quality="high" bgcolor="#c3cfd2"
-			width="351" height="255" name="chart" align="middle"
+              <div class="ja-box-ct clearfix" align="center">
+		<embed src="/media/smallchart2.swf" quality="high" bgcolor="#c3cfd2"
+			width="367" height="269" name="chart" align="middle"
+			scale="noorder"
 			flashvars="type={{ request.GET.type }}&keyword={{ request.GET.key }}"
 			play="true"
 			loop="false"
@@ -75,9 +76,9 @@
 				<option value="stat">Статистика</option>
 				<option value="blogs">Блоги</option>
 			</select>
-			<input type="text" name="key"><input type="submit" value="Запрос">
+			<input type="text" name="key" value="{{ request.GET.key }}"><input type="submit" value="Запрос">
 		</form>
-
+		 Вы можете проверить популярность интересующего  Вас лица по результатам упоминания о нем в блогосфере за последний  месяц. Введите фамилию и выберите настройку поиска. Если Вы хотите сравнить данные по двум или трем лицам, введите их фамилии через запятую.
 
               </div>
             </div>
