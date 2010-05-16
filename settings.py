@@ -186,9 +186,6 @@ TINYMCE_DEFAULT_CONFIG = {
 	'auto_cleanup_word' : 'true',
 }
 
-FORCE_SCRIPT_NAME = ''
-GOOGLE_MAPS_API_KEY = 'ABQIAAAAo_BekSQzbIM45E_VTSQzXRTB0WtQ7uMj5AxTt8-NRSydQqMDsBR_pFkppvVwy4m66Euv5AaEPF8Ccg'
-
 try:
     from settings_local import *
 except ImportError:
