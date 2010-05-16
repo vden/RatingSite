@@ -64,7 +64,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 
-ROOT_URLCONF = 'vipprlab.urls'
+ROOT_URLCONF = 'ratings.urls'
 
 AUTHENTICATION_BACKENDS = (
     'django_openid_auth.auth.OpenIDBackend',
