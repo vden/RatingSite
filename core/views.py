@@ -11,3 +11,12 @@ def index(request):
 
 def aim(request, path):
 	return  render_to_response("core/aim.html", {}, context_instance=RequestContext(request))
+
+def bookmarks_by_tag(request, tag):
+
+    tag = urllib.unquote(unicode(tag))
+    tag = get_object_or_404(Tag, name = tag)
+
+    bookmark_instances = TaggedItem.objects.get_by_model(BookmarkInstance, tag)
+
+    return render_to_response("core/tag.html", { "bookmark_instances": bookmark_instances, }, context_instance=RequestContext(request))
