@@ -151,7 +151,9 @@ var tmplurl='http://it-found.org/templates/ja_teline_iii';
 	<input type="hidden" name="next" value="{{ next }}" />
  {% endif %}
 
+{% if request.user.is_staff %}
    <a href="/admin/">Управление сайтом</a>
+{% endif %}
 	</fieldset>
 </form>
 

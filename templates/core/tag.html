@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load tagging_tags %}
+
+
+
+{% tag_cloud_for_model bookmarks.UserBookmarkInstance as tags with steps=9 min_count=0 distribution=log %}
+
+
+
+
+<div id="cloud">
+
+    {% for tag in tags %}
+
+       <a href="{% url tag tag|urlencode %}" style="font-size: 1.{{ tag.font_size }}em">{{ tag }}</a>&nbsp;
+
+    {% endfor %}
+
+</div>
+
