@@ -34,3 +34,7 @@ tr.mceLast td.mceLast, #id_description_ifr {
 span.breadcrumbs li { 
 display: inline;
  }
+
+div.news_img {
+	padding-right: 1em;
+}
